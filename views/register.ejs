@@ -1,0 +1,50 @@
+<%- include('partials/layout-head', { csrfToken }) %>
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Create Account</div>
+    <% if (errors && errors.length) { %>
+      <div class="error">
+        <ul>
+          <% errors.forEach(e => { %>
+            <li><%= e.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+    <form method="POST" action="/register" novalidate>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="form-row">
+        <label class="label" for="name">Full Name</label>
+        <input class="input" id="name" name="name" type="text" placeholder="Jane Doe" value="<%= data.name || '' %>" required>
+      </div>
+      <div class="form-row">
+        <label class="label" for="email">Email</label>
+        <input class="input" id="email" name="email" type="email" placeholder="jane@example.com" value="<%= data.email || '' %>" required>
+        <div class="helper email">We will never share your email.</div>
+      </div>
+      <div class="form-row">
+        <label class="label" for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" placeholder="••••••••" minlength="8" required>
+        <div class="row small">
+          <label class="checkbox">
+            <input type="checkbox" data-toggle-password="password" /> Show password
+          </label>
+        </div>
+        <div class="helper">Min 8 chars, include a lowercase, uppercase and a number.</div>
+      </div>
+      <div class="form-row">
+        <label class="label" for="confirmPassword">Confirm Password</label>
+        <input class="input" id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password" required>
+        <div class="row small">
+          <label class="checkbox">
+            <input type="checkbox" data-toggle-password="confirmPassword" /> Show password
+          </label>
+        </div>
+      </div>
+      <div class="row right">
+        <button class="btn" type="submit">Create Account</button>
+      </div>
+    </form>
+  </div>
+</div>
+<%- include('partials/layout-foot') %>

@@ -1,0 +1,21 @@
+<%- include('partials/layout-head', { csrfToken }) %>
+<section class="hero">
+  <h1>Share secrets, safely.</h1>
+  <p>Application showcasing secure authentication: validation, crypt password hashing, JWT based auth store in Http only cookies, and CSRF protection.</p>
+</section>
+
+<div class="grid grid-2">
+  <div class="card">
+    <div class="card-title">SignUp here!</div>
+    <p class="small">Create an account with a strong password policy.</p>
+    <div class="hr"></div>
+    <a href="/register" class="btn">Create your account</a>
+  </div>
+  <div class="card">
+    <div class="card-title">Already a member?</div>
+    <p class="small">Sign in securely and access your protected dashboard.</p>
+    <div class="hr"></div>
+    <a href="/login" class="btn">Sign in</a>
+  </div>
+</div>
+<%- include('partials/layout-foot') %>

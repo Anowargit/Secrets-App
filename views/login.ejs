@@ -1,0 +1,36 @@
+<%- include('partials/layout-head', { csrfToken }) %>
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Sign In</div>
+    <% if (errors && errors.length) { %>
+      <div class="error">
+        <ul>
+          <% errors.forEach(e => { %>
+            <li><%= e.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+    <form method="POST" action="/login" novalidate>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <div class="form-row">
+        <label class="label" for="email">Email</label>
+        <input class="input" id="email" name="email" type="email" placeholder="you@example.com" value="<%= data.email || '' %>" required>
+        <div class="helper email">We will never share your email.</div>
+      </div>
+      <div class="form-row">
+        <label class="label" for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" placeholder="Your password" required>
+        <div class="row small">
+          <label class="checkbox">
+            <input type="checkbox" data-toggle-password="password" /> Show password
+          </label>
+        </div>
+      </div>
+      <div class="row right">
+        <button class="btn" type="submit">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
+<%- include('partials/layout-foot') %>
